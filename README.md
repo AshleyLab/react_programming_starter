@@ -1,7 +1,7 @@
 # Getting Started
+Follow the instructions below to download and run the project.
 
 ## Installation
-
 Install <a href="https://git-scm.com/downloads">git</a>
 
 Install <a href="https://nodejs.org/en/download/">node.js</a>
