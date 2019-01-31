@@ -1,6 +1,6 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from "react";
+import { render } from "react-dom";
 
-import ReactApp from './reactApplication';
+import ReactApp from "./reactApplication";
 
-render(<ReactApp />, document.getElementById('j-application'));
+render(<ReactApp />, document.getElementById("j-application"));
