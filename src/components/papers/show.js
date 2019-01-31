@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 // depends on global $
 
@@ -18,11 +19,11 @@ class PapersShow extends Component {
     // depends on global $
     $.ajax({
       url: _url,
-      dataType: 'JSONP',
+      dataType: "JSONP",
       success: (_data) => {
         this.setState({ data: { title: _data.title, abstract: _data.abstract.text } });
       },
-      error: function (xhr, textStatus, errorThrown) { throw('API error: ', errorThrown); }
+      error: function (xhr, textStatus, errorThrown) { throw("API error: ", errorThrown); }
     });
   }
 
@@ -38,7 +39,7 @@ class PapersShow extends Component {
 }
 
 PapersShow.propTypes = {
-  params: React.PropTypes.object
+  params: PropTypes.object
 };
 
 export default PapersShow;
