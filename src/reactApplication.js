@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Router, browserHistory, createMemoryHistory } from 'react-router';
-import routes from './routes';
+import React, { Component } from "react";
+import { Router, Route } from "react-router-dom";
+import _history from "./history";
+import Layout from "./components/layout";
 
 class ReactApp extends Component {
   render() {
-    let _history = (typeof browserHistory === 'object') ? browserHistory : createMemoryHistory('/');
     return (
       <Router history={_history}>
-        {routes}
+        <Route component={Layout} path="/" />
       </Router>
     );
   }
