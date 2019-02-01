@@ -16,10 +16,10 @@ npm -v
 ```
 
 ## With node.js installed
-In a directory where you have write permission, clone the repository from Github:
+In a directory where you have write permission, clone the repository from GitHub:
 
 ```
-git clone git@github.com:ClinGen/react_programming_starter.git
+git clone -b master git@github.com:AshleyLab/react_programming_starter_[username].git
 ```
 
 When the cloning completes, `cd` into the `react_programming_starter` directory and run the following command:
@@ -34,7 +34,7 @@ Start the development task
 npm start
 ```
 
-Go to `http://localhost:8080/webpack-dev-server/`
+Go to `http://localhost:8080/`
 
 ## Test
 
@@ -46,4 +46,3 @@ npm test
 
 That will run any file ending in `.test.js` in the `src` directory using mocha.
 
-ClinGen Stanford University
