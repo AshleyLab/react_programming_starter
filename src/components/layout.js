@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 import style from './style.css';
@@ -35,7 +36,7 @@ class Layout extends Component {
                       <Link to='/'>Home</Link>
                     </li>
                     <li>
-                      <Link to='papers'>Papers</Link>
+                      <Link to='/papers'>Papers</Link>
                     </li>
                   </ul>
                 </div>
@@ -52,7 +53,7 @@ class Layout extends Component {
 }
 
 Layout.propTypes = {
-  children: React.PropTypes.object
+  children: PropTypes.object
 };
 
 export default Layout;
