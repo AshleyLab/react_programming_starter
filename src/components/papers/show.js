@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 
 // depends on global $
 
@@ -14,31 +16,48 @@ class PapersShow extends Component {
 
   fetchPaperData() {
     let paperId = this.props.params.id;
-    var _url = `http://www.yeastgenome.org/webservice/reference/${paperId}/overview`;
+    const _url = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&id=${paperId}`;
     // depends on global $
-    $.ajax({
-      url: _url,
-      dataType: 'JSONP',
-      success: (_data) => {
-        this.setState({ data: { title: _data.title, abstract: _data.abstract.text } });
-      },
-      error: function (xhr, textStatus, errorThrown) { throw('API error: ', errorThrown); }
-    });
+    axios.get(_url)
+      .then(response => {
+        const result = response.data.result;
+        this.setState({
+          data: {
+            title: result[paperId]['title'],
+            journalname: result[paperId]['fulljournalname'],
+            authors: result[paperId]['authors']
+          }
+        });
+      })
+      .catch(err => {
+        throw('API error: ', err);
+      });
+  }
+
+  renderAuthors(authorList) {
+    let authors = [];
+    if (authorList.length) {
+      authorList.forEach(author => {
+        authors.push(author.name);
+      });
+      return <span>{authors.join(', ')}</span>;
+    }
   }
 
   render() {
-    let data = this.state.data || {};
+    let data = this.state.data || {title: null, journalname: null, authors: []};
     return (
       <div>
         <h1>{data.title}</h1>
-        <p>{data.abstract}</p>
+        <h4>Journal: {data.journalname}</h4>
+        <p>Authors: {this.renderAuthors(data.authors)}</p>
       </div>
     );
   }
 }
 
 PapersShow.propTypes = {
-  params: React.PropTypes.object
+  params: PropTypes.object
 };
 
 export default PapersShow;
